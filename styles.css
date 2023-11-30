@@ -65,6 +65,7 @@ img {
 
 #counterDiv h1 {
   height: 100%;
+  /* font-size: 180px; */
   font-size: 140px;
   background: #121212;
   font-weight: 800;
