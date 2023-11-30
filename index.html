@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- style -->
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <!-- left side -->
+        <div class="leftSide">
+          <img src="./img/logo.svg" alt="logo" class="images" />
+        </div>
+
+        <!-- middle logo -->
+        <div class="middleLogo">
+          <img src="./img/middleLogo.svg" alt="logo" class="images" />
+        </div>
+      </header>
+      <div class="container">
+        <!-- sections one -->
+        <section class="counterSection">
+          <!-- left side -->
+          <h1>Total Production Till Date</h1>
+          <!-- right side counter -->
+          <div id="counterDiv"></div>
+        </section>
+        <!-- section two -->
+        <section class="production">
+          <div class="heads">
+            <h2>Current Month Production</h2>
+            <!-- label -->
+            <span>Last Updated on: 23rd Sept 2023</span>
+          </div>
+
+          <div class="gridContainer">
+            <!-- head -->
+            <div class="gridHeads">
+              <span>Eagle</span>
+              <span>Eagle II</span>
+              <span>MDI</span>
+              <span>NEF</span>
+            </div>
+
+            <!-- contents -->
+            <div id="firstFour" class="gridItems">
+            </div>
+
+            <div id="secondFour" class="gridItems">
+              </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
