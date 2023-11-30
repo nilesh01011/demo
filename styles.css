@@ -113,9 +113,14 @@ img {
 
 .production .heads span {
   padding: 10px 16px;
-  background: #ececec;
+  /* background: #ececec; */
   color: #121212;
   border-radius: 9px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.production .heads span b {
   font-weight: 700;
 }
 
