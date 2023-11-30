@@ -47,12 +47,13 @@ img {
   display: flex;
   gap: 100px;
   justify-content: space-between;
+  align-items: center;
 }
 
 .counterSection h1 {
   font-size: 56px;
   font-weight: 900;
-  max-width: 300px;
+  /* max-width: 300px; */
 }
 
 #counterDiv {
