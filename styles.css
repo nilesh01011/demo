@@ -53,6 +53,7 @@ img {
 .counterSection h1 {
   font-size: 56px;
   font-weight: 900;
+  /* width: 100%; */
   /* max-width: 300px; */
 }
 

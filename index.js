@@ -80,19 +80,19 @@ const firstFour = [
 const secondFour = [
   {
     count: 50000,
-    text: "Planned",
+    text: "Plan",
   },
   {
     count: 90000,
-    text: "Planned",
+    text: "Plan",
   },
   {
     count: 60000,
-    text: "Planned",
+    text: "Plan",
   },
   {
     count: 20000,
-    text: "Planned",
+    text: "Plan",
   },
 ];
 
