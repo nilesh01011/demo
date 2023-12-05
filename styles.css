@@ -48,13 +48,13 @@ img {
   gap: 100px;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .counterSection h1 {
   font-size: 56px;
   font-weight: 900;
-  /* width: 100%; */
-  /* max-width: 300px; */
 }
 
 #counterDiv {
@@ -65,9 +65,31 @@ img {
   justify-content: end;
 }
 
+#counterDiv .conflict_animation {
+  position: absolute;
+  top: 0;
+  width: 600px;
+  height: calc(100% + 68px);
+  /* object-fit: contain; */
+  object-fit: cover;
+}
+
+#counterDiv .conflict_animation.one {
+  left: 30%; /* adjust left side position */
+}
+
+#counterDiv .conflict_animation.two {
+  left: 55%; /* adjust middle side position */
+}
+
+#counterDiv .conflict_animation.three {
+  right: -2%; /* adjust right side position */
+  object-position: right;
+  width: 280px;
+}
+
 #counterDiv h1 {
   height: 100%;
-  /* font-size: 180px; */
   font-size: 140px;
   background: #121212;
   font-weight: 800;

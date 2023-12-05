@@ -8,6 +8,8 @@ const countdownEl = document.getElementById("countdown");
 // counter div
 const counterDiv = document.getElementById("counterDiv");
 
+const counterH1 = counterDiv.querySelectorAll("h1")
+
 // setInterval(updateCountdown, 1000);
 
 // function updateCountdown() {
@@ -20,39 +22,47 @@ const counterDiv = document.getElementById("counterDiv");
 //   time++;
 // }
 
-const counterNumber = [
-  {
-    count: 7,
-  },
-  {
-    count: 2,
-  },
-  {
-    count: 0,
-  },
-  {
-    count: 0,
-  },
-  {
-    count: 0,
-  },
-  {
-    count: 0,
-  },
-  {
-    count: 0,
-  },
-  {
-    count: 0,
-  },
-];
+// =================================================
 
-counterNumber.forEach((item) => {
-  const h1 = document.createElement("h1");
-  h1.textContent = item.count;
+// const counterNumber = [
+//   {
+//     count: 7,
+//   },
+//   {
+//     count: 2,
+//   },
+//   {
+//     count: 0,
+//   },
+//   {
+//     count: 0,
+//   },
+//   {
+//     count: 0,
+//   },
+//   {
+//     count: 0,
+//   },
+//   {
+//     count: 0,
+//   },
+//   {
+//     count: 0,
+//   },
+// ];
 
-  counterDiv.appendChild(h1);
-});
+// counterNumber.forEach((item) => {
+//   const h1 = document.createElement("h1");
+//   h1.textContent = item.count;
+
+//   counterDiv.appendChild(h1);
+// });
+
+counterH1.forEach((ele) => {
+  if(ele.classList.contains("countUp")){
+    // ele.textContent = 1
+  }
+})
 
 // firstFour
 const firstFourDiv = document.getElementById("firstFour");
