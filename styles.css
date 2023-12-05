@@ -100,10 +100,10 @@ img {
   justify-content: center;
 }
 
-#counterDiv h1:first-child {
-  border-bottom-left-radius: 15px;
-  border-top-left-radius: 15px;
-}
+/* #counterDiv h1:first-child {
+  border-bottom-left-radius: 15px !important;
+  border-top-left-radius: 15px !important;
+} */
 
 #counterDiv h1:last-child {
   border-top-right-radius: 15px;
