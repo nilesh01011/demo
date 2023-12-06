@@ -24,39 +24,50 @@ const counterH1 = counterDiv.querySelectorAll("h1")
 
 // =================================================
 
-// const counterNumber = [
-//   {
-//     count: 7,
-//   },
-//   {
-//     count: 2,
-//   },
-//   {
-//     count: 0,
-//   },
-//   {
-//     count: 0,
-//   },
-//   {
-//     count: 0,
-//   },
-//   {
-//     count: 0,
-//   },
-//   {
-//     count: 0,
-//   },
-//   {
-//     count: 0,
-//   },
-// ];
+const counterNumber = [
+  {
+    count: 7,
+  },
+  {
+    count: 2,
+  },
+  {
+    count: 0,
+  },
+  {
+    count: 0,
+  },
+  {
+    count: 0,
+  },
+  {
+    count: 0,
+  },
+  {
+    count: 0,
+  },
+  {
+    count: 0,
+  },
+];
 
-// counterNumber.forEach((item) => {
-//   const h1 = document.createElement("h1");
-//   h1.textContent = item.count;
+counterNumber.forEach((item,index) => {
+  const h1 = document.createElement("h1");
+  h1.textContent = item.count;
 
-//   counterDiv.appendChild(h1);
-// });
+  counterDiv.appendChild(h1);
+
+  if(index === 0) {
+    h1.style.borderTopLeftRadius = "15px"
+    h1.style.borderBottomLeftRadius = "15px"
+  }
+
+  if(counterNumber.length - 1 === index) {
+    console.log(index)
+    h1.style.borderTopRightRadius = "15px"
+    h1.style.borderBottomRightRadius = "15px"
+  }
+});
 
 counterH1.forEach((ele) => {
   if(ele.classList.contains("countUp")){
