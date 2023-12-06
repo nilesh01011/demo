@@ -72,6 +72,7 @@ img {
   height: calc(100% + 68px);
   /* object-fit: contain; */
   object-fit: cover;
+  display: none;
 }
 
 #counterDiv .conflict_animation.one {
@@ -98,6 +99,39 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#counterDiv #number-ticker {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background: #121212;
+  max-width: max-content;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+#counterDiv #number-ticker .digit {
+  width: 120px;
+  height: 168px;
+  line-height: 168px;
+  text-align: center;
+}
+
+#number-ticker .digit:last-child .col-num,
+#number-ticker .digit:first-child .col-num {
+  border-left: none;
+}
+
+#number-ticker .digit .col-num {
+  color: #fff;
+  width: 100%;
+  border-right: 1px solid #fff;
+  box-sizing: border-box;
+  font-size: 140px;
+  font-weight: 800;
+  padding: 0 20px;
 }
 
 /* production */

@@ -8,72 +8,52 @@ const countdownEl = document.getElementById("countdown");
 // counter div
 const counterDiv = document.getElementById("counterDiv");
 
-const counterH1 = counterDiv.querySelectorAll("h1")
-
-// setInterval(updateCountdown, 1000);
-
-// function updateCountdown() {
-//   const minutes = Math.floor(time / 60);
-//   let seconds = time % 60;
-
-//   seconds = seconds < 10 ? "0" + seconds : seconds;
-
-//   counterDiv.innerHTML = `${minutes} ${seconds}`;
-//   time++;
-// }
-
 // =================================================
 
-const counterNumber = [
-  {
-    count: 7,
-  },
-  {
-    count: 2,
-  },
-  {
-    count: 0,
-  },
-  {
-    count: 0,
-  },
-  {
-    count: 0,
-  },
-  {
-    count: 0,
-  },
-  {
-    count: 0,
-  },
-  {
-    count: 0,
-  },
-];
+// const counterNumber = [
+//   {
+//     count: 7,
+//   },
+//   {
+//     count: 2,
+//   },
+//   {
+//     count: 0,
+//   },
+//   {
+//     count: 0,
+//   },
+//   {
+//     count: 0,
+//   },
+//   {
+//     count: 0,
+//   },
+//   {
+//     count: 0,
+//   },
+//   {
+//     count: 0,
+//   },
+// ];
 
-counterNumber.forEach((item,index) => {
-  const h1 = document.createElement("h1");
-  h1.textContent = item.count;
+// counterNumber.forEach((item,index) => {
+//   const h1 = document.createElement("h1");
+//   h1.textContent = item.count;
 
-  counterDiv.appendChild(h1);
+//   counterDiv.appendChild(h1);
 
-  if(index === 0) {
-    h1.style.borderTopLeftRadius = "15px"
-    h1.style.borderBottomLeftRadius = "15px"
-  }
+//   if(index === 0) {
+//     h1.style.borderTopLeftRadius = "15px"
+//     h1.style.borderBottomLeftRadius = "15px"
+//   }
 
-  if(counterNumber.length - 1 === index) {
-    console.log(index)
-    h1.style.borderTopRightRadius = "15px"
-    h1.style.borderBottomRightRadius = "15px"
-  }
-});
-
-counterH1.forEach((ele) => {
-  if(ele.classList.contains("countUp")){
-    // ele.textContent = 1
-  }
-})
+//   if(counterNumber.length - 1 === index) {
+//     console.log(index)
+//     h1.style.borderTopRightRadius = "15px"
+//     h1.style.borderBottomRightRadius = "15px"
+//   }
+// });
 
 // firstFour
 const firstFourDiv = document.getElementById("firstFour");
@@ -141,26 +121,5 @@ secondFour.forEach((item) => {
   secondFourDiv.appendChild(p);
 });
 
-// ========================================
-// let exampleNumber = 72000;
+// ====================New Demo====================
 
-// function incrementLastDigit() {
-//   // Convert the number to a string to easily access individual digits
-//   const numberString = exampleNumber.toString();
-
-//   // Convert the string to an array of digits
-//   const digitsArray = numberString.split('').map(Number);
-
-//   // Increment the last digit by 1
-//   digitsArray[digitsArray.length - 1] += 1;
-
-//   // Join the array back into a string with spaces between the digits
-//   const result = digitsArray.join(' ');
-
-//   // Update the example number and log the result
-//   exampleNumber = parseInt(result.replace(/\s/g, ''), 10);
-//   console.log(result);
-// }
-
-// // Set up the interval to call the incrementLastDigit function every 1000 milliseconds (1 second)
-// setInterval(incrementLastDigit, 1000);
