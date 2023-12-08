@@ -1,5 +1,4 @@
 let countStart = Math.floor(71999990).toString();
-// let countStart = Math.floor(Math.random() * 10000000).toString();
 const one = document.getElementById("digit-place1");
 const ten = document.getElementById("digit-place2");
 const hundred = document.getElementById("digit-place3");
@@ -29,7 +28,7 @@ let hundredKScrollVal = hundredKStartVal * 100;
 let oneMScrollVal = oneMStartVal * 100;
 let tenMScrollVal = tenMStartVal * 100;
 
-let conflict_animation = document.querySelectorAll(".conflict_animation")
+let conflict_animation = document.querySelectorAll(".conflict_animation");
 
 window.addEventListener("load", function () {
   one.style = "transform: translateY(-" + oneScrollVal + "%)";
@@ -52,11 +51,6 @@ function counterTick(index) {
     if (oneScrollVal > 900) {
       tenScrollVal = tenStartVal * 100 + (oneScrollVal - 900);
       // console.log("oneScrollVal > 900")
-
-      conflict_animation.forEach((ele) => {
-        ele.style.display = "block"
-      })
-
     }
     if (oneScrollVal === 0 && tenScrollVal - tenStartVal * 100 === 99) {
       tenStartVal = tenStartVal < 9 ? tenStartVal + 1 : 0;
@@ -134,23 +128,39 @@ function counterTick(index) {
       oneMStartVal = oneMStartVal < 9 ? oneMStartVal + 1 : 0;
       oneMScrollVal = oneMStartVal * 100;
       // console.log("tenMScrollVal % 100 === 0 && oneMScrollVal - oneMStartVal * 100 === 99")
+
+      // check if counter reached to the lakhs then display block of conflict
+      conflict_animation.forEach((ele) => {
+        ele.style.display = "block";
+      });
     }
     // Check if the counter reached the desired value
-    checkCounterValue();
+    // checkCounterValue();
     counterTick(index);
-  }, 15);
+  }, 4);
 }
 
-function checkCounterValue() {
-  // Check if the counter reached the desired value
-  const currentCounterValue = parseInt(
-    `${oneStartVal}${tenStartVal}${hundredStartVal}${oneKStartVal}${tenKStartVal}${hundredKStartVal}${oneMStartVal}${tenMStartVal}`
-  );
-  if (currentCounterValue === 72000000) {
-    console.log("Counter reached 72,000,000");
-    // Add any actions you want to perform when the counter reaches 72,000,000
-  }
+// check if the conflict animation is running then display none
+if (conflict_animation) {
+  conflict_animation.forEach((ele) => {
+    setInterval(() => {
+      if (ele.style.display === "block") {
+        return (ele.style.display = "none");
+      }
+    }, 8000);
+  });
 }
+
+// function checkCounterValue() {
+//   // Check if the counter reached the desired value
+//   const currentCounterValue = parseInt(
+//     `${oneStartVal}${tenStartVal}${hundredStartVal}${oneKStartVal}${tenKStartVal}${hundredKStartVal}${oneMStartVal}${tenMStartVal}`
+//   );
+//   if (currentCounterValue === 72000000) {
+//     console.log("Counter reached 72,000,000");
+//     // Add any actions you want to perform when the counter reaches 72,000,000
+//   }
+// }
 
 function animateCounter() {
   one.style = "transform: translateY(-" + oneScrollVal + "%)";
