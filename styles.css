@@ -90,7 +90,8 @@ img {
 }
 
 #counterDiv .conflict_animation.three {
-  right: -2%; /* adjust right side position */
+  right: -4%;
+  /* right: -2%; adjust right side position */
   object-position: right;
   width: 280px;
 }

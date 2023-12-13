@@ -1,4 +1,5 @@
-let countStart = Math.floor(71999990).toString();
+let countStart = Math.floor(72009990).toString();
+// let countStart = Math.floor(71999990).toString();
 const one = document.getElementById("digit-place1");
 const ten = document.getElementById("digit-place2");
 const hundred = document.getElementById("digit-place3");
@@ -41,6 +42,9 @@ window.addEventListener("load", function () {
   tenM.style = "transform: translateY(-" + tenMScrollVal + "%)";
   window.requestAnimationFrame(animateCounter);
   counterTick(oneScrollVal);
+  // Existing counter tick logic
+
+  // checkCounterValue();
 });
 
 function counterTick(index) {
@@ -67,6 +71,7 @@ function counterTick(index) {
     ) {
       hundredStartVal = hundredStartVal < 9 ? hundredStartVal + 1 : 0;
       hundredScrollVal = hundredStartVal * 100;
+      // every 100 reached counter
       // console.log("tenScrollVal % 100 === 0 && hundredScrollVal - hundredStartVal * 100 === 99")
     }
     if (hundredScrollVal > 900) {
@@ -79,7 +84,16 @@ function counterTick(index) {
     ) {
       oneKStartVal = oneKStartVal < 9 ? oneKStartVal + 1 : 0;
       oneKScrollVal = oneKStartVal * 100;
+      // reached 1000 counter
       // console.log("hundredScrollVal % 100 === 0 && oneKScrollVal - oneKStartVal * 100 === 99")
+
+      // check if counter reached to the lakhs then display block of conflict
+      conflict_animation.forEach((ele) => {
+        if (ele.style.display === "block") {
+          ele.style.display = "none";
+        }
+        console.log(ele.style.display);
+      });
     }
     if (oneKScrollVal > 900) {
       tenKScrollVal = tenKStartVal * 100 + (oneKScrollVal - 900);
@@ -92,6 +106,11 @@ function counterTick(index) {
       tenKStartVal = tenKStartVal < 9 ? tenKStartVal + 1 : 0;
       tenKScrollVal = tenKStartVal * 100;
       // console.log("oneKScrollVal % 100 === 0 && tenKScrollVal - tenKStartVal * 100 === 99")
+
+      // check if counter reached to the lakhs then display block of conflict
+      conflict_animation.forEach((ele) => {
+        ele.style.display = "block";
+      });
     }
     if (tenKScrollVal > 900) {
       hundredKScrollVal = hundredKStartVal * 100 + (tenKScrollVal - 900);
@@ -128,39 +147,10 @@ function counterTick(index) {
       oneMStartVal = oneMStartVal < 9 ? oneMStartVal + 1 : 0;
       oneMScrollVal = oneMStartVal * 100;
       // console.log("tenMScrollVal % 100 === 0 && oneMScrollVal - oneMStartVal * 100 === 99")
-
-      // check if counter reached to the lakhs then display block of conflict
-      conflict_animation.forEach((ele) => {
-        ele.style.display = "block";
-      });
     }
-    // Check if the counter reached the desired value
-    // checkCounterValue();
     counterTick(index);
-  }, 4);
+  }, 1);
 }
-
-// check if the conflict animation is running then display none
-if (conflict_animation) {
-  conflict_animation.forEach((ele) => {
-    setInterval(() => {
-      if (ele.style.display === "block") {
-        return (ele.style.display = "none");
-      }
-    }, 8000);
-  });
-}
-
-// function checkCounterValue() {
-//   // Check if the counter reached the desired value
-//   const currentCounterValue = parseInt(
-//     `${oneStartVal}${tenStartVal}${hundredStartVal}${oneKStartVal}${tenKStartVal}${hundredKStartVal}${oneMStartVal}${tenMStartVal}`
-//   );
-//   if (currentCounterValue === 72000000) {
-//     console.log("Counter reached 72,000,000");
-//     // Add any actions you want to perform when the counter reaches 72,000,000
-//   }
-// }
 
 function animateCounter() {
   one.style = "transform: translateY(-" + oneScrollVal + "%)";

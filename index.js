@@ -8,53 +8,6 @@ const countdownEl = document.getElementById("countdown");
 // counter div
 const counterDiv = document.getElementById("counterDiv");
 
-// =================================================
-
-// const counterNumber = [
-//   {
-//     count: 7,
-//   },
-//   {
-//     count: 2,
-//   },
-//   {
-//     count: 0,
-//   },
-//   {
-//     count: 0,
-//   },
-//   {
-//     count: 0,
-//   },
-//   {
-//     count: 0,
-//   },
-//   {
-//     count: 0,
-//   },
-//   {
-//     count: 0,
-//   },
-// ];
-
-// counterNumber.forEach((item,index) => {
-//   const h1 = document.createElement("h1");
-//   h1.textContent = item.count;
-
-//   counterDiv.appendChild(h1);
-
-//   if(index === 0) {
-//     h1.style.borderTopLeftRadius = "15px"
-//     h1.style.borderBottomLeftRadius = "15px"
-//   }
-
-//   if(counterNumber.length - 1 === index) {
-//     console.log(index)
-//     h1.style.borderTopRightRadius = "15px"
-//     h1.style.borderBottomRightRadius = "15px"
-//   }
-// });
-
 // firstFour
 const firstFourDiv = document.getElementById("firstFour");
 const secondFourDiv = document.getElementById("secondFour");
@@ -122,4 +75,8 @@ secondFour.forEach((item) => {
 });
 
 // ====================New Demo====================
+// dates
+const dateFormatted = document.querySelector("#date");
+const momentDates = moment().format("Do MMM YYYY, LT");
 
+dateFormatted.innerHTML = momentDates;
