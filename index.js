@@ -1,5 +1,4 @@
 // timer
-
 const startingMinutes = 72000000;
 let time = startingMinutes * 60;
 
@@ -76,7 +75,12 @@ secondFour.forEach((item) => {
 
 // ====================New Demo====================
 // dates
-const dateFormatted = document.querySelector("#date");
-const momentDates = moment().format("Do MMM YYYY, LT");
+function dateUpdates() {
+  const dateFormatted = document.querySelector("#date");
+  const momentDates = moment().format("Do MMM YYYY, LT");
 
-dateFormatted.innerHTML = momentDates;
+  return (dateFormatted.innerHTML = momentDates);
+}
+
+dateUpdates();
+setInterval(dateUpdates, 1000);

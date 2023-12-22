@@ -10,11 +10,8 @@
   width: 100%;
   height: 100%;
   max-width: 1920px;
-  /* min-width: 1920px; */
-  /* max-width: 1600px; */
   margin: 0 auto;
 }
-
 
 header {
   width: 100%;
@@ -41,8 +38,6 @@ img {
 .container {
   padding: 0 40px;
   width: 100%;
-  /* max-width: 1600px;
-  margin: 0 auto; */
 }
 
 .counterSection {
@@ -81,8 +76,13 @@ img {
   display: none;
 }
 
+#counterDiv .conflict_animation.hidden {
+  display: block;
+}
+
 #counterDiv .conflict_animation.one {
-  left: 30%; /* adjust left side position */
+  /* left: 30%; adjust left side position */
+  left: 35%;
 }
 
 #counterDiv .conflict_animation.two {
@@ -112,11 +112,20 @@ img {
   width: 100%;
   display: flex;
   justify-content: center;
-  overflow: hidden;
   background: #121212;
-  max-width: max-content;
-  margin: 0 auto;
-  border-radius: 15px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+#counterDiv #number-ticker span {
+  font-size: 110px;
+  color: #ffffff;
+  font-weight: 800;
+  padding: 0 20px;
+}
+
+#counterDiv #number-ticker span:not(:last-child) {
+  border-right: 1px solid #fff;
 }
 
 #counterDiv #number-ticker .digit {
