@@ -86,14 +86,15 @@ img {
 }
 
 #counterDiv .conflict_animation.two {
-  left: 55%; /* adjust middle side position */
+  /* left: 55%; adjust middle side position */
+  left: 57%;
 }
 
 #counterDiv .conflict_animation.three {
-  right: -4%;
-  /* right: -2%; adjust right side position */
+  /* right: -4%; */
+  right: -13%;
   object-position: right;
-  width: 280px;
+  /* width: 280px; */
 }
 
 #counterDiv h1 {
@@ -124,9 +125,9 @@ img {
   padding: 0 20px;
 }
 
-#counterDiv #number-ticker span:not(:last-child) {
+/* #counterDiv #number-ticker span:not(:last-child) {
   border-right: 1px solid #fff;
-}
+} */
 
 #counterDiv #number-ticker .digit {
   width: 120px;
@@ -148,6 +149,11 @@ img {
   font-size: 140px;
   font-weight: 800;
   padding: 0 20px;
+}
+
+#number-ticker #digit-place6 .col-num,
+#number-ticker #digit-place4 .col-num {
+border-right: 3px solid #fff;
 }
 
 /* production */

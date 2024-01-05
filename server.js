@@ -20,7 +20,7 @@
 
 // console.log(countStart)
 
-const numberStart = 4609910;
+const numberStart = 4609980;
 
 const conflictAnimation = document.querySelectorAll(
   "#counterDiv .conflict_animation"
@@ -47,6 +47,7 @@ const conflictAnimation = document.querySelectorAll(
 setInterval(() => {
   // Retrieve the current value from localStorage
   const getCounterNumber = localStorage.getItem("countStart");
+  let counterNumberReached = false;
 
   // Check if the value exists in localStorage
   if (getCounterNumber) {
@@ -54,39 +55,36 @@ setInterval(() => {
     const updatedCounterNumber = Number(getCounterNumber) + 1;
     localStorage.setItem("countStart", updatedCounterNumber.toString());
 
-    // Log the updated counter value
-    // console.log("Updated Counter Number:", updatedCounterNumber);
-
     // Check if the updated counter reaches a multiple of 10,000
-    // if (updatedCounterNumber % 10000 === 0) {
-    //   // Show the conflict animation
-    //   conflictAnimation.forEach((ele) => {
-    //     // Toggle display between block and none
-    //     // ele.style.display = "block";
-    //     ele.classList.add("hidden");
-    //   });
-    // }
-
-    if (updatedCounterNumber % 11000 === 0) {
-      console.log("Condition is true",updatedCounterNumber);
-    } else {
-      console.log("Condition is false",updatedCounterNumber);
+    if (updatedCounterNumber % 10000 === 0) {
+      localStorage.setItem("animationStart", true);
+      counterNumberReached = true;
     }
 
-    // Check if the updated counter reaches a multiple of 10,000
-    if (updatedCounterNumber % 11000 === 0) {
+    if (counterNumberReached === true) {
+      console.log(counterNumberReached, "10k reached");
+    }
+
+    const animationPopupStart = Boolean(localStorage.getItem("animationStart"));
+
+    if (animationPopupStart) {
       // Show the conflict animation
       conflictAnimation.forEach((ele) => {
         // Toggle display between block and none
         // ele.style.display = "block";
-        ele.classList.remove("hidden");
+        ele.classList.add("hidden");
       });
     }
+
+    if (updatedCounterNumber % 11000 === 0) {
+      console.log("11k reached", updatedCounterNumber);
+    }
+
   } else {
     // If the value doesn't exist, initialize it with numberStart
     localStorage.setItem("countStart", numberStart);
   }
-}, 100);
+}, 800);
 
 // Retrieve the initial value from localStorage and log it
 const initialCounterNumber = parseInt(localStorage.getItem("countStart"));
