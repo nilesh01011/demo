@@ -20,12 +20,6 @@
 
 // console.log(countStart)
 
-const numberStart = 4609980;
-
-const conflictAnimation = document.querySelectorAll(
-  "#counterDiv .conflict_animation"
-);
-
 // setInterval(() => {
 //   // Retrieve the current value from localStorage
 //   const getCounterNumber = localStorage.getItem("countStart");
@@ -44,10 +38,24 @@ const conflictAnimation = document.querySelectorAll(
 //   }
 // }, 1000);
 
+// const numberStart = 4609989;
+// const numberStart = 4610990;
+const numberStart = 4609990;
+
+const conflictAnimation = document.querySelectorAll(
+  "#counterDiv .conflict_animation"
+);
+
+var animationShow = false;
+
+const counterNumberReached = 1099;
+
+let numberReach10k = 0;
+
+// ====================== set counter in localStorage ================
 setInterval(() => {
   // Retrieve the current value from localStorage
-  const getCounterNumber = localStorage.getItem("countStart");
-  let counterNumberReached = false;
+  const getCounterNumber = localStorage.getItem("countStart"); // x store in location storage
 
   // Check if the value exists in localStorage
   if (getCounterNumber) {
@@ -55,31 +63,85 @@ setInterval(() => {
     const updatedCounterNumber = Number(getCounterNumber) + 1;
     localStorage.setItem("countStart", updatedCounterNumber.toString());
 
-    // Check if the updated counter reaches a multiple of 10,000
-    if (updatedCounterNumber % 10000 === 0) {
-      localStorage.setItem("animationStart", true);
-      counterNumberReached = true;
-    }
-
-    if (counterNumberReached === true) {
-      console.log(counterNumberReached, "10k reached");
-    }
-
     const animationPopupStart = Boolean(localStorage.getItem("animationStart"));
 
-    if (animationPopupStart) {
-      // Show the conflict animation
+    // Check if the updated counter reaches a multiple of 10,000
+    // if (updatedCounterNumber % 10000 === 0) {
+    //   localStorage.setItem("animationStart", true);
+    //   animationShow = true;
+    // }
+
+    let shartCounterNext = false;
+
+    let next10k = Math.ceil(updatedCounterNumber / 10000) * 10000;
+
+    if (next10k === updatedCounterNumber) {
+      shartCounterNext = true;
+
+      numberReach10k = updatedCounterNumber;
+      // Show animations
       conflictAnimation.forEach((ele) => {
         // Toggle display between block and none
-        // ele.style.display = "block";
-        ele.classList.add("hidden");
+        ele.style.display = "block";
       });
+
+      console.log("animation closed in this counter:", numberReach10k + 1000);
+      console.log("current Number:", updatedCounterNumber);
+      console.log(
+        "numberReach10k + 1000 === updatedCounterNumber:",
+        numberReach10k + 1000 === updatedCounterNumber
+      );
+
+      console.log("numberReach10k typeof:",typeof numberReach10k)
+
+      console.log(
+        "numberReach10k + 1000 === updatedCounterNumber typeof:",
+        typeof numberReach10k + 1000 === updatedCounterNumber
+      );
+
+      if (numberReach10k + 1000 === updatedCounterNumber) {
+        console.log(
+          "11k numberReach10k + 1000 === counterNumber:",
+          numberReach10k + 1000 === updatedCounterNumber
+        );
+      }
     }
 
-    if (updatedCounterNumber % 11000 === 0) {
-      console.log("11k reached", updatedCounterNumber);
-    }
+    // if (updatedCounterNumber >= 10000) {
+    //   console.log("Number Reached 10k");
+    // }
 
+    // console.log(updatedCounterNumber,"Value")
+
+    // if (animationShow) {
+    //   // console.log(animationShow, "10k reached");
+
+    //   if (updatedCounterNumber % 999 === 0) {
+    //     console.log("999 values reached");
+    //   }
+
+    //   if (animationPopupStart) {
+    //     // Show the conflict animation
+    //     conflictAnimation.forEach((ele) => {
+    //       ele.classList.add("hidden");
+    //     });
+    //   }
+
+    //   if (updatedCounterNumber % 11000 === 0) {
+    //     console.log("11k reached", updatedCounterNumber);
+    //   }
+    // }
+
+    // if (animationPopupStart) {
+    //   // Show the conflict animation
+    //   conflictAnimation.forEach((ele) => {
+    //     ele.classList.add("hidden");
+    //   });
+    // }
+
+    // if (updatedCounterNumber % 11000 === 0) {
+    //   console.log("11k reached", updatedCounterNumber);
+    // }
   } else {
     // If the value doesn't exist, initialize it with numberStart
     localStorage.setItem("countStart", numberStart);
@@ -89,8 +151,8 @@ setInterval(() => {
 // Retrieve the initial value from localStorage and log it
 const initialCounterNumber = parseInt(localStorage.getItem("countStart"));
 
-console.log("Initial Counter Number:", initialCounterNumber);
-
+// console.log("Initial Counter Number:", initialCounterNumber);
+// ========================= old codes =====================
 let countStart = Math.floor(initialCounterNumber).toString();
 
 const one = document.getElementById("digit-place1");
@@ -266,7 +328,7 @@ function counterTick(index) {
     // }
 
     counterTick(index);
-  }, 1);
+  }, 7);
 }
 
 function animateCounter() {

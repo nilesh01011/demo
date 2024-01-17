@@ -75,12 +75,12 @@ secondFour.forEach((item) => {
 
 // ====================New Demo====================
 // dates
-function dateUpdates() {
-  const dateFormatted = document.querySelector("#date");
-  const momentDates = moment().format("Do MMM YYYY, LT");
+// function dateUpdates() {
+//   const dateFormatted = document.querySelector("#date");
+//   const momentDates = moment().format("Do MMM YYYY, LT");
 
-  return (dateFormatted.innerHTML = momentDates);
-}
+//   return (dateFormatted.innerHTML = momentDates);
+// }
 
-dateUpdates();
-setInterval(dateUpdates, 1000);
+// dateUpdates();
+// setInterval(dateUpdates, 1000);

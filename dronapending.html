@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- style -->
+    <style>
+      header.main-header {
+        display: none;
+      }
+
+      section.content.padding-top-only {
+        margin-top: 0px !important;
+      }
+
+      .content-wrapper {
+        background: #fff !important;
+        min-height: auto !important;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Lato";
+        color: #121212;
+      }
+
+      .main {
+        width: 100%;
+        height: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+      }
+
+      header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 100px;
+      }
+
+      header .leftSide {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        top: 0;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .container {
+        padding: 0 40px;
+        width: 100%;
+      }
+
+      .counterSection {
+        width: 100%;
+        padding: 35px 40px;
+        border-radius: 16px;
+        background: #ececec;
+        display: flex;
+        gap: 100px;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .counterSection h1 {
+        font-size: 56px;
+        font-weight: 900;
+        /* width: 100%; */
+        /* max-width: 300px; */
+      }
+
+      #counterDiv {
+        width: 100%;
+        display: flex;
+        gap: 1px;
+        align-items: center;
+        justify-content: end;
+      }
+
+      #counterDiv .conflict_animation {
+        position: absolute;
+        top: 0;
+        width: 600px;
+        height: calc(100% + 68px);
+        /* object-fit: contain; */
+        object-fit: cover;
+      }
+
+      .congrates_gif_div {
+        display: none;
+      }
+
+      #counterDiv .conflict_animation.one {
+        left: 30%; /* adjust left side position */
+      }
+
+      #counterDiv .conflict_animation.two {
+        left: 55%; /* adjust middle side position */
+      }
+
+      #counterDiv .conflict_animation.three {
+        right: -4%;
+        /* right: -2%; adjust right side position */
+        object-position: right;
+        width: 280px;
+      }
+
+      #counterDiv h1 {
+        height: 100%;
+        font-size: 140px;
+        background: #121212;
+        font-weight: 800;
+        color: #ffffff;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /*#counterDiv #number-ticker {
+                  width: 100%;
+                  display: flex;
+                  justify-content: center;
+                  overflow: hidden;
+                  background: #121212;
+                  max-width: max-content;
+                  margin: 0 auto;
+                  border-radius: 15px;
+              }*/
+
+      #counterDiv #number-ticker {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background: #121212;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+
+      #counterDiv #number-ticker span {
+        font-size: 110px;
+        color: #ffffff;
+        font-weight: 800;
+        padding: 0 20px;
+      }
+
+      #counterDiv #number-ticker span:not(:last-child) {
+        border-right: 1px solid #fff;
+      }
+
+      #counterDiv #number-ticker .digit {
+        width: 120px;
+        height: 168px;
+        line-height: 168px;
+        text-align: center;
+      }
+
+      #number-ticker .digit:last-child .col-num,
+      #number-ticker .digit:first-child .col-num {
+        border-left: none;
+      }
+
+      #number-ticker .digit .col-num {
+        color: #fff;
+        width: 100%;
+        border-right: 1px solid #fff;
+        box-sizing: border-box;
+        font-size: 140px;
+        font-weight: 800;
+        padding: 0 20px;
+      }
+
+      /* production */
+
+      .production {
+        margin-top: 4px;
+        margin-bottom: 8px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .production .heads {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .production .heads h2 {
+        font-size: 36px;
+        font-weight: 700;
+      }
+
+      .production .heads span {
+        padding: 10px 16px;
+        /* background: #ececec; */
+        color: #121212;
+        border-radius: 9px;
+        font-size: 24px;
+        font-weight: 500;
+      }
+
+      .production .heads span b {
+        font-weight: 700;
+      }
+
+      .production .gridContainer {
+        border: 1px solid #121212;
+        border-radius: 16px;
+      }
+
+      .production .gridContainer .gridHeads {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-items: center;
+        justify-content: center;
+      }
+
+      .production .gridContainer .gridHeads span {
+        text-align: center;
+        padding: 10px;
+        font-size: 32px;
+        font-weight: 700;
+      }
+
+      .production .gridContainer .gridHeads span:not(:last-child) {
+        border-right: 1px solid #121212;
+      }
+
+      .production .gridContainer .gridItems {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .production .gridContainer .gridItems p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px 0;
+        border-top: 1px solid #121212;
+        margin-bottom: 0px;
+      }
+
+      .production .gridContainer .gridItems p:not(:last-child) {
+        border-right: 1px solid #121212;
+      }
+
+      .production .gridContainer .gridItems p .eagle_value {
+        font-size: 100px;
+        font-weight: 900;
+      }
+
+      .production .gridContainer .gridItems p .actual_text {
+        font-size: 34px;
+        font-weight: 400;
+      }
+
+      .Hidden {
+        display: none;
+      }
+
+      .Show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <!-- left side -->
+        <div class="leftSide">
+          <!-- <img src="../content/images/logo.svg" alt="logo" class="images" /> -->
+        </div>
+        <!-- middle logo -->
+        <div class="middleLogo">
+          <!-- <img
+            src="../content/images/middleLogo.svg"
+            alt="logo"
+            class="images"
+          /> -->
+        </div>
+      </header>
+      <p id="countdown" style="font-size: 36px; margin-left: 100px"></p>
+      <div class="container">
+        <!-- sections one -->
+        <section class="counterSection">
+          <!-- left side -->
+          <h1>Total Production Till Date</h1>
+          <!-- right side counter -->
+          <div id="counterDiv">
+            <div class="containers">
+              <div
+                id="number-ticker"
+                class="number-ticker"
+                style="font-size: 110px; color: #fff"
+              >
+                <!--Commented for extra initial digit(0) of Total Production Count -->
+
+                <!-- <div id="digit-place8" class="digit">
+                  <div class="col-num">0</div>
+                  <div class="col-num">1</div>
+                  <div class="col-num">2</div>
+                  <div class="col-num">3</div>
+                  <div class="col-num">4</div>
+                  <div class="col-num">5</div>
+                  <div class="col-num">6</div>
+                  <div class="col-num">7</div>
+                  <div class="col-num">8</div>
+                  <div class="col-num">9</div>
+                  <div class="col-num">0</div>
+                </div>
+
+                <div id="digit-place7" class="digit">
+                  <div class="col-num">0</div>
+                  <div class="col-num">1</div>
+                  <div class="col-num">2</div>
+                  <div class="col-num">3</div>
+                  <div class="col-num">4</div>
+                  <div class="col-num">5</div>
+                  <div class="col-num">6</div>
+                  <div class="col-num">7</div>
+                  <div class="col-num">8</div>
+                  <div class="col-num">9</div>
+                  <div class="col-num">0</div>
+                </div>
+                <div id="digit-place6" class="digit">
+                  <div class="col-num">0</div>
+                  <div class="col-num">1</div>
+                  <div class="col-num">2</div>
+                  <div class="col-num">3</div>
+                  <div class="col-num">4</div>
+                  <div class="col-num">5</div>
+                  <div class="col-num">6</div>
+                  <div class="col-num">7</div>
+                  <div class="col-num">8</div>
+                  <div class="col-num">9</div>
+                  <div class="col-num">0</div>
+                </div>
+                <div id="digit-place5" class="digit">
+                  <div class="col-num">0</div>
+                  <div class="col-num">1</div>
+                  <div class="col-num">2</div>
+                  <div class="col-num">3</div>
+                  <div class="col-num">4</div>
+                  <div class="col-num">5</div>
+                  <div class="col-num">6</div>
+                  <div class="col-num">7</div>
+                  <div class="col-num">8</div>
+                  <div class="col-num">9</div>
+                  <div class="col-num">0</div>
+                </div>
+                <div id="digit-place4" class="digit">
+                  <div class="col-num">0</div>
+                  <div class="col-num">1</div>
+                  <div class="col-num">2</div>
+                  <div class="col-num">3</div>
+                  <div class="col-num">4</div>
+                  <div class="col-num">5</div>
+                  <div class="col-num">6</div>
+                  <div class="col-num">7</div>
+                  <div class="col-num">8</div>
+                  <div class="col-num">9</div>
+                  <div class="col-num">0</div>
+                </div>
+                <div id="digit-place3" class="digit">
+                  <div class="col-num">0</div>
+                  <div class="col-num">1</div>
+                  <div class="col-num">2</div>
+                  <div class="col-num">3</div>
+                  <div class="col-num">4</div>
+                  <div class="col-num">5</div>
+                  <div class="col-num">6</div>
+                  <div class="col-num">7</div>
+                  <div class="col-num">8</div>
+                  <div class="col-num">9</div>
+                  <div class="col-num">0</div>
+                </div>
+                <div id="digit-place2" class="digit">
+                  <div class="col-num">0</div>
+                  <div class="col-num">1</div>
+                  <div class="col-num">2</div>
+                  <div class="col-num">3</div>
+                  <div class="col-num">4</div>
+                  <div class="col-num">5</div>
+                  <div class="col-num">6</div>
+                  <div class="col-num">7</div>
+                  <div class="col-num">8</div>
+                  <div class="col-num">9</div>
+                  <div class="col-num">0</div>
+                </div>
+                <div id="digit-place1" class="digit">
+                  <div class="col-num">0</div>
+                  <div class="col-num">1</div>
+                  <div class="col-num">2</div>
+                  <div class="col-num">3</div>
+                  <div class="col-num">4</div>
+                  <div class="col-num">5</div>
+                  <div class="col-num">6</div>
+                  <div class="col-num">7</div>
+                  <div class="col-num">8</div>
+                  <div class="col-num">9</div>
+                  <div class="col-num">0</div>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="congrates_gif_div">
+              <img
+                class="conflict_animation one"
+                alt="conflict_animation"
+                src="./img/Confitti-animation-1-unscreen.gif"
+              />
+              <img
+                class="conflict_animation two"
+                alt="conflict_animation"
+                src="./img/Confitti-animation-1-unscreen.gif"
+              />
+              <img
+                class="conflict_animation three"
+                alt="conflict_animation"
+                src="./img/Confitti-animation-1-unscreen.gif"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- section two -->
+        <section class="production">
+          <div class="heads">
+            <h2>Current Month Production</h2>
+            <!-- label -->
+            <span>
+              Last Updated On:
+              <b id="date">
+                <!-- 23rd Nov 2023 -->
+              </b>
+            </span>
+          </div>
+          <div class="gridContainer">
+            <!-- head -->
+            <div class="gridHeads">
+              <span>Eagle II</span>
+              <span>Eagle II New</span>
+              <span>MDI</span>
+              <span>MHawk</span>
+            </div>
+            <!-- contents -->
+            <div id="firstFour" class="gridItems">
+              <p>
+                <span class="eagle_value" id="eagle2"></span>
+                <span class="actual_text">Actual</span>
+              </p>
+              <p>
+                <span class="eagle_value" id="eagle3"></span>
+                <span class="actual_text">Actual</span>
+              </p>
+              <p>
+                <span class="eagle_value" id="mdi"></span>
+                <span class="actual_text">Actual</span>
+              </p>
+              <p>
+                <span class="eagle_value" id="mhawk"></span>
+                <span class="actual_text">Actual</span>
+              </p>
+            </div>
+
+            <div id="secondFour" class="gridItems">
+              <p>
+                <span class="eagle_value" id="plan1"></span>
+                <span class="actual_text">Plan</span>
+              </p>
+              <p>
+                <span class="eagle_value" id="plan2"></span>
+                <span class="actual_text">Plan</span>
+              </p>
+              <p>
+                <span class="eagle_value" id="plan3"></span>
+                <span class="actual_text">Plan</span>
+              </p>
+              <p>
+                <span class="eagle_value" id="plan4"></span>
+                <span class="actual_text">Plan</span>
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
+
+<script>
+  // timer
+  //   debugger;
+  const startingMinutes = 72000000;
+  let time = startingMinutes * 60;
+
+  const countdownEl = document.getElementById("countdown");
+
+  // counter div
+  const counterDiv = document.getElementById("counterDiv");
+
+  //   function dateUpdates() {
+  //     const dateFormatted = document.querySelector("#date");
+  //     const momentDates = moment().format("Do MMM YYYY, LT");
+
+  //     return (dateFormatted.innerHTML = momentDates);
+  //   }
+
+  //   dateUpdates();
+  //   setInterval(dateUpdates, 1000);
+
+  // Dynmic API data
+  function Getdatacount() {
+    //  debugger;
+    // API endpoint
+    // const apiURL = "/report/getCount";
+
+    const counterNumberDiv = document.querySelector("#number-ticker");
+
+    // Make API call
+    const jsonData = {
+      EagleII: 12000,
+      EagleIII: 11000,
+      MDI: 1000,
+      NEF: 18000,
+      Monthly: [
+        {
+          Value: 50000,
+        },
+        {
+          Value: 90000,
+        },
+        {
+          Value: 60000,
+        },
+        {
+          Value: 20000,
+        },
+      ],
+      res: 4609990,
+    };
+    displayData(jsonData);
+
+    function displayData(data) {
+      console.log("displayData:", data);
+      //    console.log(data);
+      //   localStorage.setItem("Counter", counterNumber);
+      let CounterNumber = Number(localStorage.getItem("Counter"));
+      let initialCounter = Number(localStorage.getItem("APICallCounter"));
+        let X1 = Number(localStorage.getItem("X1"));
+        console.log("X1 initial:", X1);
+      console.log("initialCounter:", initialCounter);
+        if (initialCounter >= 0) {
+          initialCounter++;
+          console.log("initialCounter Post:", initialCounter);
+          if (initialCounter == 1) {
+            console.log("Counter Value:X:", initialCounter);
+            localStorage.setItem("X", CounterNumber.toString());
+            localStorage.setItem("APICallCounter", initialCounter.toString());
+          } else if (initialCounter == 2) {
+            console.log("Counter Value:X1:", initialCounter);
+            localStorage.setItem("X1", CounterNumber.toString());
+            localStorage.setItem("APICallCounter", initialCounter.toString());
+          } else {
+            localStorage.setItem("X1", CounterNumber.toString());
+            // X1 = Number(localStorage.getItem("X1"));
+            console.log("when its 3 X1:", X1);
+
+            if (!!X1 && X1 == 0) {
+              console.log("Pre X1:", X1);
+              localStorage.setItem("X1", Counter.toString());
+              console.log("Post X1:", X1);
+            }
+            // else if (initialCounter == 3) {
+            //    console.log("Counter Value:X2:", initialCounter)
+            // localStorage.setItem("X2", Counter.toString())
+            //   localStorage.setItem("APICallCounter", initialCounter.toString())
+            // }
+
+            let X = Number(localStorage.getItem("X"));
+            // let X1 = Number(localStorage.getItem("X1"));
+            let X_diff = 0;
+            console.log("X:", X);
+            console.log("X1:", X1);
+            console.log("X_Diff:", X_diff);
+
+            if (X !== undefined && X1 !== undefined) {
+              X_diff = X1 - X;
+              console.log("X_diff Post:", X_diff);
+
+              if (
+                (X_diff >= 10000 && X_diff < 11000) ||
+                (X_diff >= 20000 && X_diff < 21000) ||
+                (X_diff >= 30000 && X_diff < 31000) ||
+                (X_diff >= 40000 && X_diff < 41000) ||
+                (X_diff >= 50000 && X_diff < 51000) ||
+                (X_diff >= 60000 && X_diff < 61000)
+              ) {
+                //document.getElementsByClassName("congrates_gif_div").classList.add("hidden")
+                //   $(".congrates_gif_div").prop("");
+                //   $(".congrates_gif_div").removeClass("Hidden").addClass("Show");
+                localStorage.setItem("X", X1);
+                localStorage.setItem("X1", 0);
+              } else {
+                //document.getElementsByClassName("congrates_gif_div").classList.remove("hidden");
+                //   $(".congrates_gif_div").prop("display : none");
+                //   $(".congrates_gif_div").removeClass("Show").addClass("Hidden");
+              }
+            }
+          }
+        }
+      const firstFourDiv = document.getElementById("firstFour");
+      const secondFourDiv = document.getElementById("secondFour");
+      let eagle2 = (document.getElementById("eagle2").innerText = data.EagleII);
+      let eagle3 = (document.getElementById("eagle3").innerText =
+        data.EagleIII);
+      let mdi = (document.getElementById("mdi").innerText = data.MDI);
+      let mhawk = (document.getElementById("mhawk").innerText = data.NEF);
+      let plan1 = (document.getElementById("plan1").innerText =
+        data.Monthly[0].Value);
+      let plan2 = (document.getElementById("plan2").innerText =
+        data.Monthly[1].Value);
+      let plan3 = (document.getElementById("plan3").innerText =
+        data.Monthly[2].Value);
+      let plan4 = (document.getElementById("plan4").innerText =
+        data.Monthly[3].Value);
+
+      counterNumberDiv.innerText = data.res;
+
+      //   counterTick(data.res);
+      counterNumber = data.res;
+      let counterPre = localStorage.getItem("Counter");
+      if (counterPre >= 10000) {
+        //   $("congrates_gif_div").show()
+        //document.getElementsByClassName("congrates_gif_div").classList.add("hidden")
+        // $(".congrates_gif_div").prop("");
+        // $(".congrates_gif_div").removeClass("Show").addClass("Hidden");
+      }
+
+      console.log("counterNumber:", counterNumber);
+    }
+
+    // Call API initially and every 30 seconds
+    // getAPIdata();
+    // setInterval(getAPIdata, 30000);
+  }
+
+  //   $(document).ready(function () {
+  //     console.log("In Document Ready");
+  //     localStorage.setItem("APICallCounter", 0);
+  //     Getdatacount();
+  //   });
+
+  Getdatacount();
+
+  //   document.addEventListener("loadstart", function () {
+  //     console.log("In Document Ready");
+  //     localStorage.setItem("APICallCounter", 0);
+  //     Getdatacount();
+  //   });
+</script>
