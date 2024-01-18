@@ -331,7 +331,7 @@
                   <div class="col-num">8</div>
                   <div class="col-num">9</div>
                   <div class="col-num">0</div>
-                </div>
+                </div> -->
 
                 <div id="digit-place7" class="digit">
                   <div class="col-num">0</div>
@@ -423,7 +423,7 @@
                   <div class="col-num">8</div>
                   <div class="col-num">9</div>
                   <div class="col-num">0</div>
-                </div> -->
+                </div>
               </div>
             </div>
 
@@ -562,73 +562,12 @@
       ],
       res: 4609990,
     };
+    
     displayData(jsonData);
 
     function displayData(data) {
       let CounterNumber = Number(localStorage.getItem("Counter"));
-      let initialCounter = Number(localStorage.getItem("APICallCounter"));
-        let X1 = Number(localStorage.getItem("X1"));
-        console.log("X1 initial:", X1);
-      console.log("initialCounter:", initialCounter);
-        if (initialCounter >= 0) {
-          initialCounter++;
-          console.log("initialCounter Post:", initialCounter);
-          if (initialCounter == 1) {
-            console.log("Counter Value:X:", initialCounter);
-            localStorage.setItem("X", CounterNumber.toString());
-            localStorage.setItem("APICallCounter", initialCounter.toString());
-          } else if (initialCounter == 2) {
-            console.log("Counter Value:X1:", initialCounter);
-            localStorage.setItem("X1", CounterNumber.toString());
-            localStorage.setItem("APICallCounter", initialCounter.toString());
-          } else {
-            localStorage.setItem("X1", CounterNumber.toString());
-            // X1 = Number(localStorage.getItem("X1"));
-            console.log("when its 3 X1:", X1);
 
-            if (!!X1 && X1 == 0) {
-              console.log("Pre X1:", X1);
-              localStorage.setItem("X1", Counter.toString());
-              console.log("Post X1:", X1);
-            }
-            // else if (initialCounter == 3) {
-            //    console.log("Counter Value:X2:", initialCounter)
-            // localStorage.setItem("X2", Counter.toString())
-            //   localStorage.setItem("APICallCounter", initialCounter.toString())
-            // }
-
-            let X = Number(localStorage.getItem("X"));
-            // let X1 = Number(localStorage.getItem("X1"));
-            let X_diff = 0;
-            console.log("X:", X);
-            console.log("X1:", X1);
-            console.log("X_Diff:", X_diff);
-
-            if (X !== undefined && X1 !== undefined) {
-              X_diff = X1 - X;
-              console.log("X_diff Post:", X_diff);
-
-              if (
-                (X_diff >= 10000 && X_diff < 11000) ||
-                (X_diff >= 20000 && X_diff < 21000) ||
-                (X_diff >= 30000 && X_diff < 31000) ||
-                (X_diff >= 40000 && X_diff < 41000) ||
-                (X_diff >= 50000 && X_diff < 51000) ||
-                (X_diff >= 60000 && X_diff < 61000)
-              ) {
-                //document.getElementsByClassName("congrates_gif_div").classList.add("hidden")
-                //   $(".congrates_gif_div").prop("");
-                //   $(".congrates_gif_div").removeClass("Hidden").addClass("Show");
-                localStorage.setItem("X", X1);
-                localStorage.setItem("X1", 0);
-              } else {
-                //document.getElementsByClassName("congrates_gif_div").classList.remove("hidden");
-                //   $(".congrates_gif_div").prop("display : none");
-                //   $(".congrates_gif_div").removeClass("Show").addClass("Hidden");
-              }
-            }
-          }
-        }
       const firstFourDiv = document.getElementById("firstFour");
       const secondFourDiv = document.getElementById("secondFour");
       let eagle2 = (document.getElementById("eagle2").innerText = data.EagleII);
@@ -650,12 +589,6 @@
       //   counterTick(data.res);
       counterNumber = data.res;
       let counterPre = localStorage.getItem("Counter");
-      if (counterPre >= 10000) {
-        //   $("congrates_gif_div").show()
-        //document.getElementsByClassName("congrates_gif_div").classList.add("hidden")
-        // $(".congrates_gif_div").prop("");
-        // $(".congrates_gif_div").removeClass("Show").addClass("Hidden");
-      }
 
       console.log("counterNumber:", counterNumber);
     }
@@ -671,11 +604,7 @@
   //     Getdatacount();
   //   });
 
-  Getdatacount();
-
-  //   document.addEventListener("loadstart", function () {
-  //     console.log("In Document Ready");
-  //     localStorage.setItem("APICallCounter", 0);
-  //     Getdatacount();
-  //   });
+  document.addEventListener("load", function () {
+    Getdatacount();
+  });
 </script>
