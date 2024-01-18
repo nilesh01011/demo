@@ -1,5 +1,5 @@
-let counterNumber = 4608990;
-// let counterNumber = 4609990;
+// let counterNumber = 4608990;
+let counterNumber = 4609990;
 // let counterNumber = 4610980;
 let conflictAnimation = document.querySelectorAll(".conflict_animation");
 let numberCounterDiv = document.getElementById("number-ticker");
@@ -12,44 +12,54 @@ function counterTick() {
   // Increment the counter
   counterNumber++;
 
-  let shartCounterNext = false;
+  // let shartCounterNext = false;
 
   let next10k = Math.ceil(counterNumber / 10000) * 10000;
 
+  // check 10k reached
   if (next10k === counterNumber) {
-    // console.log("animations show");
-    // console.log("next10k === counterNumber:",next10k === counterNumber);
-    // console.log("animations show");
-    shartCounterNext = true;
+    // shartCounterNext = true;
 
-    numberReach10k = counterNumber;
+    localStorage.setItem("matchThis11k", next10k);
+
+    // numberReach10k += counterNumber;
     // Show animations
     conflictAnimation.forEach((ele) => {
       // Toggle display between block and none
       ele.style.display = "block";
-      // console.log(ele)
     });
 
-    console.log("animation closed in this counter:", numberReach10k + 1000);
-    console.log("current Number:", counterNumber);
-
-    if (numberReach10k + 1000 === counterNumber) {
-      console.log(
-        "11k numberReach10k + 1000 === counterNumber:",
-        numberReach10k + 1000 === counterNumber
-      );
-    }
+    // console.log("animation closed in this counter:", numberReach10k + 1000);
+    // console.log("current Number:", updatedCounterNumber);
+    // console.log(
+    //   "numberReach10k + 1000 === updatedCounterNumber:",
+    //   numberReach10k + 1000 === updatedCounterNumber
+    // );
   }
 
-  // if (numberReach10k === counterNumber) {
-  //   console.log("numberReach10k === counterNumber",numberReach10k === counterNumber,numberReach10k," ",counterNumber)
-  //   console.log("Checking numberReach10k + 1000 === counterNumber:",numberReach10k + 1000 === counterNumber)
-  //   if (numberReach10k + 1000 === counterNumber) {
-  //     console.log("animations hides");
-  //     shartCounterNext = false;
-  //     numberReach10k = 0;
-  //   }
-  // }
+  const get10kNumber = Number(localStorage.getItem("matchThis11k"));
+
+  let check11kNumber = get10kNumber + 1000;
+
+  // console.log("check11kNumber:", check11kNumber);
+
+  // console.log(
+  //   "number match with check11kNumber == updatedCounterNumber",
+  //   check11kNumber == counterNumber
+  // );
+
+  // console.log("updateCounterNumber:", counterNumber);
+
+  // animation hidden
+  if (check11kNumber == counterNumber) {
+    // Show animations
+    conflictAnimation.forEach((ele) => {
+      // Toggle display between block and none
+      ele.style.display = "none";
+    });
+
+    localStorage.setItem("matchThis11k", next10k);
+  }
 
   // console.log(counterNumber)
 
@@ -70,53 +80,9 @@ function counterTick() {
     span.textContent = item;
     numberCounterDiv.appendChild(span);
   });
-
-  // // Convert the counter to a string and split it into an array of digits
-  // const counterString = counterNumber.toString().split("");
-
-  // counterString.forEach((item) => {
-  //   const span = document.createElement("span");
-  //   span.textContent = item;
-  //   numberCounterDiv.appendChild(span);
-  // });
-
-  // // Check if the counter reaches 10k
-  // if (counterNumber % 10000 === 0) {
-  //   conflictAnimation.forEach((ele) => {
-  //     // Toggle display between block and none
-  //     ele.style.display = "block";
-  //   });
-  // }
-
-  // // // Check if the counter reaches 11k
-  // if (counterNumber % 11000 === 0) {
-  //   console.log(counterNumber);
-  //   conflictAnimation.forEach((ele) => {
-  //     console.log(ele);
-  //     if (ele.display === "block") {
-  //       ele.style.display = "none";
-  //     }
-  //   });
-  // }
 }
 
 window.addEventListener("load", function () {
-  setInterval(counterTick, 4); // 600000
-  // setInterval(counterTick, 1000); // 600000
+  // setInterval(counterTick, 4); // 600000
+  setInterval(counterTick, 1000); // 600000
 });
-
-// function countReaches(num) {
-//   let count = 0;
-
-//   for (let i = 1; i <= num; i++) {
-//     if (i % 10000 === 0) {
-//       count++;
-//     }
-//   }
-
-//   return count;
-// }
-
-// const numReaches = countReaches(4609999);
-
-// console.log("numReaches:",numReaches); // 10

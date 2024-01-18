@@ -1,56 +1,21 @@
-// // old
-// var countStart = Math.floor(46088800).toString();
-// // let countStart = 4608880
-
-// // new
-// let countStartAnimation = Math.floor(4609990).toString();
-// // let countStartAnimation = 4609990
-
-// let diffrent = Math.floor(countStart) - Math.floor(countStartAnimation);
-// // let diff = countStartAnimation - countStart
-
-// setInterval(() => {
-//   // countStart = countStart + diff;
-//   countStart = Math.floor(countStart) + Math.floor(diffrent);
-//   countStart = countStart.toString();
-
-//   // countStart = countStart.toString();
-//   // console.log("setInterval",countStart)
-// }, 3000);
-
-// console.log(countStart)
-
-// setInterval(() => {
-//   // Retrieve the current value from localStorage
-//   const getCounterNumber = localStorage.getItem("countStart");
-
-//   // Check if the value exists in localStorage
-//   if (getCounterNumber) {
-//     // Convert the value to a number, increment it, and update localStorage
-//     const updatedCounterNumber = Number(getCounterNumber) + 1;
-//     localStorage.setItem("countStart", updatedCounterNumber.toString());
-
-//     // Log the updated counter value
-//     console.log("Updated Counter Number:", updatedCounterNumber);
-//   } else {
-//     // If the value doesn't exist, initialize it with countStart
-//     localStorage.setItem("countStart", numberStart);
-//   }
-// }, 1000);
-
 // const numberStart = 4609989;
-// const numberStart = 4610990;
 const numberStart = 4609990;
+// const numberStart = 4610790;
+
+// const thousandsDigit = Math.floor(numberStart / 10000);
+
+// const next10kNumber = Math.ceil(numberStart / 10000) * 10000;
+
+// check previous 10k Reached
+// const previous10kReached = thousandsDigit * 10000;
+
+// const previous11kNumberClosed = previous10kReached + 1000;
 
 const conflictAnimation = document.querySelectorAll(
   "#counterDiv .conflict_animation"
 );
 
-var animationShow = false;
-
-const counterNumberReached = 1099;
-
-let numberReach10k = 0;
+// let numberReach10k = 0;
 
 // ====================== set counter in localStorage ================
 setInterval(() => {
@@ -63,85 +28,58 @@ setInterval(() => {
     const updatedCounterNumber = Number(getCounterNumber) + 1;
     localStorage.setItem("countStart", updatedCounterNumber.toString());
 
-    const animationPopupStart = Boolean(localStorage.getItem("animationStart"));
+    const next10kReached = Math.ceil(updatedCounterNumber / 10000) * 10000;
 
-    // Check if the updated counter reaches a multiple of 10,000
-    // if (updatedCounterNumber % 10000 === 0) {
-    //   localStorage.setItem("animationStart", true);
-    //   animationShow = true;
+    // // check previous 10k reached
+    // if (previous10kReached < updatedCounterNumber) { // true
+    //   localStorage.setItem("animationStartWith10k", true);
+
+    //   localStorage.setItem("matchThis11k", previous10kReached);
+
+    //   if (previous10kReached === updatedCounterNumber) { // when number reached to updatedCounterNumber
+    //     localStorage.setItem("animationStartWith10k", false);
+
+    //     localStorage.setItem("matchThis11k", next10kReached);
+    //   }
     // }
 
-    let shartCounterNext = false;
+    // check next 10k reached
+    if (next10kReached === updatedCounterNumber) {
+      localStorage.setItem("matchThis11k", next10kReached + 1000);
 
-    let next10k = Math.ceil(updatedCounterNumber / 10000) * 10000;
+      localStorage.setItem("animationStartWith10k", true);
+    }
 
-    if (next10k === updatedCounterNumber) {
-      shartCounterNext = true;
+    const animationPopupStart = Boolean(
+      localStorage.getItem("animationStartWith10k")
+    );
 
-      numberReach10k = updatedCounterNumber;
+    const get10kNumber = Number(localStorage.getItem("matchThis11k"));
+
+    // let checkNext11kReached = get10kNumber + 1000;
+
+    // animation hidden
+    // if (
+    //   get10kNumber + 1000 === updatedCounterNumber ||
+    //   updatedCounterNumber === previous10kReached + 1000
+    // ) {
+    //   localStorage.setItem("animationStartWith10k", false);
+
+    //   localStorage.setItem("matchThis11k", next10kReached);
+    // }
+    if (get10kNumber === updatedCounterNumber) {
+      localStorage.setItem("animationStartWith10k", false);
+
+      localStorage.setItem("matchThis11k", next10kReached);
+    }
+
+    if (animationPopupStart) {
       // Show animations
       conflictAnimation.forEach((ele) => {
         // Toggle display between block and none
-        ele.style.display = "block";
+        ele.style.display = animationPopupStart === true ? "block" : "none";
       });
-
-      console.log("animation closed in this counter:", numberReach10k + 1000);
-      console.log("current Number:", updatedCounterNumber);
-      console.log(
-        "numberReach10k + 1000 === updatedCounterNumber:",
-        numberReach10k + 1000 === updatedCounterNumber
-      );
-
-      console.log("numberReach10k typeof:",typeof numberReach10k)
-
-      console.log(
-        "numberReach10k + 1000 === updatedCounterNumber typeof:",
-        typeof numberReach10k + 1000 === updatedCounterNumber
-      );
-
-      if (numberReach10k + 1000 === updatedCounterNumber) {
-        console.log(
-          "11k numberReach10k + 1000 === counterNumber:",
-          numberReach10k + 1000 === updatedCounterNumber
-        );
-      }
     }
-
-    // if (updatedCounterNumber >= 10000) {
-    //   console.log("Number Reached 10k");
-    // }
-
-    // console.log(updatedCounterNumber,"Value")
-
-    // if (animationShow) {
-    //   // console.log(animationShow, "10k reached");
-
-    //   if (updatedCounterNumber % 999 === 0) {
-    //     console.log("999 values reached");
-    //   }
-
-    //   if (animationPopupStart) {
-    //     // Show the conflict animation
-    //     conflictAnimation.forEach((ele) => {
-    //       ele.classList.add("hidden");
-    //     });
-    //   }
-
-    //   if (updatedCounterNumber % 11000 === 0) {
-    //     console.log("11k reached", updatedCounterNumber);
-    //   }
-    // }
-
-    // if (animationPopupStart) {
-    //   // Show the conflict animation
-    //   conflictAnimation.forEach((ele) => {
-    //     ele.classList.add("hidden");
-    //   });
-    // }
-
-    // if (updatedCounterNumber % 11000 === 0) {
-    //   console.log("11k reached", updatedCounterNumber);
-    // }
   } else {
     // If the value doesn't exist, initialize it with numberStart
     localStorage.setItem("countStart", numberStart);
@@ -151,7 +89,6 @@ setInterval(() => {
 // Retrieve the initial value from localStorage and log it
 const initialCounterNumber = parseInt(localStorage.getItem("countStart"));
 
-// console.log("Initial Counter Number:", initialCounterNumber);
 // ========================= old codes =====================
 let countStart = Math.floor(initialCounterNumber).toString();
 
@@ -260,34 +197,6 @@ function counterTick(index) {
     ) {
       tenKStartVal = tenKStartVal < 9 ? tenKStartVal + 1 : 0;
       tenKScrollVal = tenKStartVal * 100;
-      // console.log("oneKScrollVal % 100 === 0 && tenKScrollVal - tenKStartVal * 100 === 99")
-
-      // check if counter reached to the lakhs then display block of conflict
-      // conflict_animation.forEach((ele) => {
-      //   ele.style.display = "block";
-      // });
-
-      // // Checking counter number reached to the 10k
-      // if (oneScrollVal >= 10000 && !isConflictAnimationVisible) {
-      //   console.log("10000", oneScrollVal);
-      //   isConflictAnimationVisible = true;
-
-      //   // showing conflict animation
-      //   conflict_animation.forEach((ele) => {
-      //     ele.style.display = "block";
-      //   });
-      // }
-
-      // // check counter reached after 11k then hide conflict animation
-      // if (oneScrollVal >= 11000 && isConflictAnimationVisible) {
-      //   console.log("11000", oneScrollVal);
-      //   isConflictAnimationVisible = false;
-
-      //   // showing conflict animation
-      //   conflict_animation.forEach((ele) => {
-      //     ele.style.display = "none";
-      //   });
-      // }
     }
     if (tenKScrollVal > 900) {
       hundredKScrollVal = hundredKStartVal * 100 + (tenKScrollVal - 900);
