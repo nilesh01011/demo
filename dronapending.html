@@ -512,16 +512,6 @@
 </html>
 
 <script>
-  // timer
-  //   debugger;
-  const startingMinutes = 72000000;
-  let time = startingMinutes * 60;
-
-  const countdownEl = document.getElementById("countdown");
-
-  // counter div
-  const counterDiv = document.getElementById("counterDiv");
-
   //   function dateUpdates() {
   //     const dateFormatted = document.querySelector("#date");
   //     const momentDates = moment().format("Do MMM YYYY, LT");
@@ -562,7 +552,7 @@
       ],
       res: 4609990,
     };
-    
+
     displayData(jsonData);
 
     function displayData(data) {
@@ -595,7 +585,7 @@
 
     // Call API initially and every 30 seconds
     // getAPIdata();
-    // setInterval(getAPIdata, 30000);
+    // Getdatacount(Getdatacount, 30000);
   }
 
   //   $(document).ready(function () {
@@ -606,5 +596,6 @@
 
   document.addEventListener("load", function () {
     Getdatacount();
+    setInterval(Getdatacount, 30000);
   });
 </script>

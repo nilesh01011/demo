@@ -151,6 +151,9 @@ img {
   padding: 0 20px;
 }
 
+#number-ticker #digit-place12 .col-num,
+#number-ticker #digit-place10 .col-num,
+#number-ticker #digit-place8 .col-num,
 #number-ticker #digit-place6 .col-num,
 #number-ticker #digit-place4 .col-num {
 border-right: 3px solid #fff;

@@ -1,8 +1,9 @@
 const numberStart = 4609990;
+// const numberStart = 46000999;
 // const numberStart = 460009990;
 
 // Convert the number to a string
-const numberString = numberStart.toString();
+// const numberString = numberStart.toString();
 
 // const numberStart = 4610790;
 
@@ -47,17 +48,12 @@ setInterval(() => {
     //   }
     // }
 
-    // check next 10k reached
+    // check next 10k reached then animation starts
     if (next10kReached === updatedCounterNumber) {
       localStorage.setItem("matchThis11k", next10kReached + 1000);
 
       localStorage.setItem("animationStartWith10k", true);
     }
-
-    const animationPopupStart = Boolean(localStorage.getItem("animationStartWith10k"));
-
-    // console.log("AnimationStartWith10k should be:", animationPopupStart);
-    // console.log("AnimationStartWith10k typeof:",typeof animationPopupStart);
 
     const get10kNumber = Number(localStorage.getItem("matchThis11k"));
 
@@ -77,9 +73,16 @@ setInterval(() => {
 
       localStorage.setItem("matchThis11k", next10kReached + 1000);
     }
+    // =======================Animation Container=========================
 
-    if (animationPopupStart === true) {
-      console.log("AnimationStartWith10k should be in Boolean(animationPopupStart) === true:", Boolean(animationPopupStart));
+    const animationPopupStart = localStorage.getItem("animationStartWith10k");
+
+    // check animationPopupStart become true
+    if (animationPopupStart === "true") {
+      console.log(
+        "AnimationStartWith10k should be in Boolean(animationPopupStart) === true:",
+        animationPopupStart
+      );
       // Show animations
       conflictAnimation.forEach((ele) => {
         // Toggle display between block and none
@@ -87,8 +90,12 @@ setInterval(() => {
       });
     }
 
-    if (animationPopupStart === false) {
-      console.log("AnimationStartWith10k should be in Boolean(animationPopupStart) === false:", Boolean(animationPopupStart));
+    // check animationPopupStart become true
+    if (animationPopupStart === "false") {
+      console.log(
+        "AnimationStartWith10k should be in Boolean(animationPopupStart) === false:",
+        animationPopupStart
+      );
       // Show animations
       conflictAnimation.forEach((ele) => {
         // Toggle display between block and none
@@ -99,7 +106,7 @@ setInterval(() => {
     // If the value doesn't exist, initialize it with numberStart
     localStorage.setItem("countStart", numberStart);
   }
-}, 400);
+}, 700);
 
 // Retrieve the initial value from localStorage and log it
 const initialCounterNumber = parseInt(localStorage.getItem("countStart"));
@@ -254,6 +261,7 @@ window.addEventListener("load", function () {
   tenK.style = "transform: translateY(-" + tenKScrollVal + "%)";
   hundredK.style = "transform: translateY(-" + hundredKScrollVal + "%)";
   oneM.style = "transform: translateY(-" + oneMScrollVal + "%)";
+  // Add manually
   // tenM.style = "transform: translateY(-" + tenMScrollVal + "%)";
   window.requestAnimationFrame(animateCounter);
   // console.log(oneScrollVal);
@@ -337,6 +345,8 @@ function counterTick(index) {
     //   oneMScrollVal = oneMStartVal * 100;
     // }
 
+    // ================================
+
     // if (elevenMScrollVal > 900) {
     //   tenMScrollVal = tenMScrollVal * 100 + (tenMScrollVal - 900);
     // }
@@ -349,7 +359,7 @@ function counterTick(index) {
     // }
 
     counterTick(index);
-  }, 3);
+  }, 1);
 }
 
 function animateCounter() {
@@ -362,7 +372,6 @@ function animateCounter() {
   oneM.style = "transform: translateY(-" + oneMScrollVal + "%)";
   // add my manually
   // tenM.style = "transform: translateY(-" + tenMScrollVal + "%)";
-
   // elevenM.style = "transform: translateY(-" + elevenMScrollVal + "%)";
 
   window.requestAnimationFrame(animateCounter);
