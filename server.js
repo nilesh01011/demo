@@ -1,4 +1,4 @@
-const numberStart = 4609999;
+const numberStart = 4609990;
 // const numberStart = 460009990;
 
 // Convert the number to a string
@@ -54,9 +54,10 @@ setInterval(() => {
       localStorage.setItem("animationStartWith10k", true);
     }
 
-    const animationPopupStart = Boolean(
-      localStorage.getItem("animationStartWith10k")
-    );
+    const animationPopupStart = Boolean(localStorage.getItem("animationStartWith10k"));
+
+    // console.log("AnimationStartWith10k should be:", animationPopupStart);
+    // console.log("AnimationStartWith10k typeof:",typeof animationPopupStart);
 
     const get10kNumber = Number(localStorage.getItem("matchThis11k"));
 
@@ -74,21 +75,31 @@ setInterval(() => {
     if (get10kNumber === updatedCounterNumber) {
       localStorage.setItem("animationStartWith10k", false);
 
-      localStorage.setItem("matchThis11k", next10kReached);
+      localStorage.setItem("matchThis11k", next10kReached + 1000);
     }
 
-    if (animationPopupStart) {
+    if (animationPopupStart === true) {
+      console.log("AnimationStartWith10k should be in Boolean(animationPopupStart) === true:", Boolean(animationPopupStart));
       // Show animations
       conflictAnimation.forEach((ele) => {
         // Toggle display between block and none
-        ele.style.display = animationPopupStart === true ? "block" : "none";
+        ele.style.display = "block";
+      });
+    }
+
+    if (animationPopupStart === false) {
+      console.log("AnimationStartWith10k should be in Boolean(animationPopupStart) === false:", Boolean(animationPopupStart));
+      // Show animations
+      conflictAnimation.forEach((ele) => {
+        // Toggle display between block and none
+        ele.style.display = "none";
       });
     }
   } else {
     // If the value doesn't exist, initialize it with numberStart
     localStorage.setItem("countStart", numberStart);
   }
-}, 800);
+}, 400);
 
 // Retrieve the initial value from localStorage and log it
 const initialCounterNumber = parseInt(localStorage.getItem("countStart"));
@@ -326,8 +337,6 @@ function counterTick(index) {
     //   oneMScrollVal = oneMStartVal * 100;
     // }
 
-
-
     // if (elevenMScrollVal > 900) {
     //   tenMScrollVal = tenMScrollVal * 100 + (tenMScrollVal - 900);
     // }
@@ -340,7 +349,7 @@ function counterTick(index) {
     // }
 
     counterTick(index);
-  }, 7);
+  }, 3);
 }
 
 function animateCounter() {
@@ -355,6 +364,6 @@ function animateCounter() {
   // tenM.style = "transform: translateY(-" + tenMScrollVal + "%)";
 
   // elevenM.style = "transform: translateY(-" + elevenMScrollVal + "%)";
-  
+
   window.requestAnimationFrame(animateCounter);
 }
