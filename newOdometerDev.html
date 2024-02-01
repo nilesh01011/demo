@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-minimal.css"
-    />
+    <link rel="stylesheet" href="./odometer.css" />
     <!-- Lato Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -157,7 +154,7 @@
       }
 
       .odometer-theme-minimal .odometer-digit .odometer-ribbon-inner {
-        transition-duration: 1.4s !important;
+        transition-duration: 1.2s !important;
       }
 
       #counterDiv #number-ticker .odometer-digit {
@@ -175,11 +172,11 @@
         border-right: 1px solid #fff;
       }
 
-      #counterDiv #number-ticker .odometer-digit:nth-child(4){
+      #counterDiv #number-ticker .odometer-digit:nth-child(4) {
         border-right: 3px solid #fff;
       }
 
-      #counterDiv #number-ticker .odometer-digit:nth-child(2){
+      #counterDiv #number-ticker .odometer-digit:nth-child(2) {
         border-right: 3px solid #fff;
       }
 
@@ -394,16 +391,11 @@
     </main>
     <!-- JavaScript -->
     <!-- odometer CDN Links -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"
-      integrity="sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <script src="odometer.js"></script>
     <!-- Date formatted moment js CDN links -->
     <script
       type="text/JavaScript"
-      src=" https://MomentJS.com/downloads/moment.js"
+      src="https://MomentJS.com/downloads/moment.js"
     ></script>
 
     <script>
@@ -411,6 +403,18 @@
       function dateUpdates() {
         const dateFormatted = document.querySelector("#date");
         const momentDates = moment().format("Do MMM YYYY, LT");
+
+        const date = new Date("2024-02-01T16:05:00");
+
+        const formattedDate = date.toLocaleString("en-US", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+        });
+
+        console.log(formattedDate);
 
         return (dateFormatted.innerHTML = momentDates);
       }
@@ -538,7 +542,7 @@
     <script>
       // update every second
       var el = document.querySelector("#number-ticker");
-      var v = 4605980;
+      var v = 4605990;
       var o = new Odometer({
         el: el,
         value: v,
