@@ -252,8 +252,6 @@ let oneMScrollVal = oneMStartVal * 100;
 
 // let elevenMScrollVal = elevenMStartVal * 100;
 
-let conflict_animation = document.querySelectorAll(".conflict_animation");
-
 window.addEventListener("load", function () {
   ten.style = "transform: translateY(-" + tenScrollVal + "%)";
   hundred.style = "transform: translateY(-" + hundredScrollVal + "%)";

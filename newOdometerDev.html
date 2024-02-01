@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-minimal.css"
+    />
+    <!-- Lato Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!---Style code--->
+    <style>
+      header.main-header {
+        display: none;
+      }
+
+      section.content.padding-top-only {
+        margin-top: 0px !important;
+      }
+
+      .content-wrapper {
+        background: #fff !important;
+        min-height: auto !important;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Lato";
+        /* color: #121212; */
+      }
+
+      .main {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+      }
+
+      header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 100px;
+      }
+
+      header .leftSide {
+        position: absolute;
+        left: -1%;
+        bottom: 0;
+        top: 0;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .container_box {
+        padding: 0 40px;
+        width: 100%;
+      }
+
+      .container {
+        max-width: 100% !important;
+      }
+
+      .counterSection {
+        width: 100%;
+        padding: 35px 40px;
+        border-radius: 16px;
+        background: #ececec;
+        display: flex;
+        gap: 100px;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .counterSection h1 {
+        font-size: 56px;
+        font-weight: 900;
+        /* width: 100%; */
+        /* max-width: 300px; */
+      }
+
+      #counterDiv {
+        width: 100%;
+        display: flex;
+        gap: 1px;
+        align-items: center;
+        justify-content: end;
+      }
+
+      #counterDiv .conflict_animation {
+        position: absolute;
+        top: 0;
+        width: 600px;
+        height: calc(100% + 68px);
+        /* object-fit: contain; */
+        object-fit: cover;
+      }
+
+      .congrates_gif_div {
+        display: none;
+      }
+
+      #counterDiv .conflict_animation.one {
+        left: 40%; /* adjust left side position */
+      }
+
+      #counterDiv .conflict_animation.two {
+        left: 62%; /* adjust middle side position */
+      }
+
+      #counterDiv .conflict_animation.three {
+        right: -12%;
+        /* right: -4%; */
+        /* right: -2%; adjust right side position */
+        object-position: right;
+        /* width: 280px; */
+      }
+
+      #counterDiv h1 {
+        height: 100%;
+        font-size: 140px;
+        background: #121212;
+        font-weight: 800;
+        color: #ffffff;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #counterDiv #number-ticker {
+        width: 100%;
+        height: 160px;
+        justify-content: center;
+        background: #121212;
+        overflow: hidden;
+        border-radius: 12px;
+        color: #ffffff !important;
+        padding-left: 30px;
+        padding-right: 5px;
+      }
+
+      .odometer-theme-minimal .odometer-digit .odometer-ribbon-inner {
+        transition-duration: 1.4s !important;
+      }
+
+      #counterDiv #number-ticker .odometer-digit {
+        font-size: 130px;
+        font-weight: 800;
+        padding: 0 10px;
+      }
+
+      .odometer-inside {
+        display: flex;
+        gap: 20px;
+      }
+
+      #counterDiv #number-ticker span:not(:last-child) {
+        border-right: 1px solid #fff;
+      }
+
+      #counterDiv #number-ticker .odometer-digit:nth-child(4){
+        border-right: 3px solid #fff;
+      }
+
+      #counterDiv #number-ticker .odometer-digit:nth-child(2){
+        border-right: 3px solid #fff;
+      }
+
+      /* production */
+      .production {
+        margin-top: 4px;
+        margin-bottom: 8px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .production .heads {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .production .heads h2 {
+        font-size: 36px;
+        font-weight: 700;
+      }
+
+      .production .heads span {
+        padding: 10px 16px;
+        /* background: #ececec; */
+        color: #121212;
+        border-radius: 9px;
+        font-size: 24px;
+        font-weight: 500;
+      }
+
+      .production .heads span b {
+        font-weight: 700;
+      }
+
+      .production .gridContainer {
+        border: 1px solid #121212;
+        border-radius: 16px;
+      }
+
+      .production .gridContainer .gridHeads {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-items: center;
+        justify-content: center;
+      }
+
+      .production .gridContainer .gridHeads span {
+        text-align: center;
+        padding: 10px;
+        font-size: 32px;
+        font-weight: 700;
+      }
+
+      .production .gridContainer .gridHeads span:not(:last-child) {
+        border-right: 1px solid #121212;
+      }
+
+      .production .gridContainer .gridItems {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .production .gridContainer .gridItems p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px 0;
+        border-top: 1px solid #121212;
+        margin-bottom: 0px;
+      }
+
+      .production .gridContainer .gridItems p:not(:last-child) {
+        border-right: 1px solid #121212;
+      }
+
+      .production .gridContainer .gridItems p .eagle_value {
+        font-size: 100px;
+        font-weight: 900;
+      }
+
+      .production .gridContainer .gridItems p .actual_text {
+        font-size: 34px;
+        font-weight: 400;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <!-- left side -->
+        <div class="leftSide">
+          <!-- <img src="../content/images/logo.svg" alt="logo" class="images" /> -->
+          <img src="./img/logo.svg" alt="logo" class="images" />
+        </div>
+        <!-- middle logo -->
+        <div class="middleLogo">
+          <img src="./img/middleLogo.svg" alt="logo" class="images" />
+          <!-- <img
+              src="../content/images/middleLogo.svg"
+              alt="logo"
+              class="images"
+            /> -->
+        </div>
+      </header>
+      <p id="countdown" style="font-size: 36px; margin-left: 100px"></p>
+      <div class="container_box">
+        <!-- sections one -->
+        <section class="counterSection">
+          <!-- left side -->
+          <h1>Total Production Till Date</h1>
+          <!-- right side counter -->
+          <div id="counterDiv">
+            <div class="containers_main">
+              <div
+                id="number-ticker"
+                class="number-ticker"
+                style="font-size: 110px; color: #fff"
+              ></div>
+            </div>
+
+            <div id="congrates_gif_div" class="congrates_gif_div">
+              <img
+                class="conflict_animation one"
+                alt="conflict_animation"
+                src="./img/Confitti-animation-1-unscreen.gif"
+              />
+              <!-- src="../content/images/Confitti-animation-1-unscreen.gif" -->
+              <img
+                class="conflict_animation two"
+                alt="conflict_animation"
+                src="./img/Confitti-animation-1-unscreen.gif"
+              />
+              <!-- src="../content/images/Confitti-animation-1-unscreen.gif" -->
+              <img
+                class="conflict_animation three"
+                alt="conflict_animation"
+                src="./img/Confitti-animation-1-unscreen.gif"
+              />
+
+              <!-- src="../content/images/Confitti-animation-1-unscreen.gif" -->
+            </div>
+          </div>
+        </section>
+        <!-- section two -->
+        <section class="production">
+          <div class="heads">
+            <h2>Current Month Production</h2>
+            <!-- label -->
+            <span>
+              Last Updated On:
+              <b id="date">
+                <!-- 23rd Nov 2023 -->
+              </b>
+            </span>
+          </div>
+          <div class="gridContainer">
+            <!-- head -->
+            <div class="gridHeads">
+              <span>Eagle II</span>
+              <span>Eagle II New</span>
+              <span>MDI</span>
+              <span>MHawk</span>
+            </div>
+            <!-- contents -->
+            <div id="firstFour" class="gridItems">
+              <p>
+                <span class="eagle_value" id="eagle2"></span>
+                <span class="actual_text">Actual</span>
+              </p>
+              <p>
+                <span class="eagle_value" id="eagle3"></span>
+                <span class="actual_text">Actual</span>
+              </p>
+              <p>
+                <span class="eagle_value" id="mdi"></span>
+                <span class="actual_text">Actual</span>
+              </p>
+              <p>
+                <span class="eagle_value" id="mhawk"></span>
+                <span class="actual_text">Actual</span>
+              </p>
+            </div>
+
+            <div id="secondFour" class="gridItems">
+              <p>
+                <span class="eagle_value" id="plan1"></span>
+                <span class="actual_text">Plan</span>
+              </p>
+              <p>
+                <span class="eagle_value" id="plan2"></span>
+                <span class="actual_text">Plan</span>
+              </p>
+              <p>
+                <span class="eagle_value" id="plan3"></span>
+                <span class="actual_text">Plan</span>
+              </p>
+              <p>
+                <span class="eagle_value" id="plan4"></span>
+                <span class="actual_text">Plan</span>
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- JavaScript -->
+    <!-- odometer CDN Links -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"
+      integrity="sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- Date formatted moment js CDN links -->
+    <script
+      type="text/JavaScript"
+      src=" https://MomentJS.com/downloads/moment.js"
+    ></script>
+
+    <script>
+      // timer
+      function dateUpdates() {
+        const dateFormatted = document.querySelector("#date");
+        const momentDates = moment().format("Do MMM YYYY, LT");
+
+        return (dateFormatted.innerHTML = momentDates);
+      }
+      dateUpdates();
+      setInterval(dateUpdates, 1000);
+
+      // Dynmic API data
+      function Getdatacount() {
+        //  debugger;
+        // API endpoint
+        const apiURL = "/report/getCount";
+
+        // Make API call
+        async function getAPIdata() {
+          //  debugger;
+          try {
+            // with authentication
+            // const response = await fetch(apiURL);
+
+            // const jsonData = await response.json();
+
+            const jsonData = {
+              EagleII: 12000,
+              EagleIII: 11000,
+              MDI: 1000,
+              NEF: 18000,
+              Monthly: [
+                {
+                  Value: 50000,
+                },
+                {
+                  Value: 90000,
+                },
+                {
+                  Value: 60000,
+                },
+                {
+                  Value: 20000,
+                },
+              ],
+              res: 4605990,
+            };
+
+            // Display data
+            displayData(jsonData);
+            // If the value doesn't exist, initialize it with numberStart
+            localStorage.setItem("countStart", jsonData.res);
+
+            console.log("Counter Data fetch after 30s:", jsonData.res);
+          } catch (error) {
+            console.log(error);
+          }
+        }
+
+        // API call for counters
+        async function getAPIdata_2() {
+          try {
+            // with authentication
+            // const response = await fetch(apiURL);
+
+            // const jsonData = await response.json();
+
+            const jsonData = {
+              EagleII: 12000,
+              EagleIII: 11000,
+              MDI: 1000,
+              NEF: 18000,
+              Monthly: [
+                {
+                  Value: 50000,
+                },
+                {
+                  Value: 90000,
+                },
+                {
+                  Value: 60000,
+                },
+                {
+                  Value: 20000,
+                },
+              ],
+              res: 4605990,
+            };
+
+            localStorage.setItem("countAnimationStart", jsonData.res);
+          } catch (error) {
+            console.log(error);
+          }
+        }
+
+        // Display data
+        function displayData(data) {
+          const firstFourDiv = document.getElementById("firstFour");
+          const secondFourDiv = document.getElementById("secondFour");
+          let eagle2 = (document.getElementById("eagle2").innerText =
+            data.EagleII);
+          let eagle3 = (document.getElementById("eagle3").innerText =
+            data.EagleIII);
+          let mdi = (document.getElementById("mdi").innerText = data.MDI);
+          let mhawk = (document.getElementById("mhawk").innerText = data.NEF);
+          let plan1 = (document.getElementById("plan1").innerText =
+            data.Monthly[0].Value);
+          let plan2 = (document.getElementById("plan2").innerText =
+            data.Monthly[1].Value);
+          let plan3 = (document.getElementById("plan3").innerText =
+            data.Monthly[2].Value);
+          let plan4 = (document.getElementById("plan4").innerText =
+            data.Monthly[3].Value);
+
+          counterNumber = data.res;
+        }
+
+        // Call API initially and every 30 seconds
+
+        getAPIdata();
+        setInterval(getAPIdata, 30000);
+
+        // API call for counter animations
+        getAPIdata_2();
+      }
+
+      Getdatacount();
+    </script>
+
+    <script>
+      // update every second
+      var el = document.querySelector("#number-ticker");
+      var v = 4605980;
+      var o = new Odometer({
+        el: el,
+        value: v,
+        theme: "minimal",
+        format: "(ddd)",
+      });
+      o.render();
+
+      //   start in 1 seconds
+      setInterval(function () {
+        setTimeout(function () {
+          o.update(v++);
+          localStorage.setItem("counterNumberOdometer", v);
+        }, 1000);
+        // Retrieve the current value from localStorage
+        const getCounterNumber = localStorage.getItem("counterNumberOdometer"); // x store in location storage
+
+        // animation div
+        const conflictAnimation = document.querySelector("#congrates_gif_div");
+        // next10k reached
+        const next10kReached = Math.ceil(v / 100) * 100;
+        // set localStorage of number odometer
+        localStorage.setItem("Next10kReachedShowAnimation", next10kReached);
+
+        // check next 10k reached then animation starts
+        if (next10kReached == getCounterNumber) {
+          console.log("Animation Start");
+          localStorage.setItem(
+            "matchThis11kToHideAnimation",
+            next10kReached + 50
+          );
+
+          localStorage.setItem("animationStartWith10k", true);
+        }
+
+        // get 11k number for matching with odometer
+        const get10kNumber = Number(
+          localStorage.getItem("matchThis11kToHideAnimation")
+        );
+
+        if (get10kNumber == getCounterNumber) {
+          console.log("Animation Hide");
+          localStorage.setItem("animationStartWith10k", false);
+
+          localStorage.setItem(
+            "matchThis11kToHideAnimation",
+            next10kReached + 50
+          );
+
+          // console.log("Closed animation after 11k:", next10kReached + 100);
+        }
+
+        // =======================Animation Container=========================
+        const animationPopupStart = localStorage.getItem(
+          "animationStartWith10k"
+        );
+
+        // check animationPopupStart become true
+        if (animationPopupStart === "true") {
+          // Show animations
+          conflictAnimation.style.display = "block";
+        }
+
+        // check animationPopupStart become true
+        if (animationPopupStart === "false") {
+          // hide animations
+          conflictAnimation.style.display = "none";
+        }
+      }, 4000);
+    </script>
+  </body>
+</html>

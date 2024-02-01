@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-minimal.css"
+      integrity="sha512-82n59AgQXo3NhYHeauDYw9TE2zGh9yOdXN9wbiDZA+uaf0xOkSYxGNLzKMMngZQjBTw94EujhfEfKkYybQqfOQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://raw.githubusercontent.com/HubSpot/odometer/master/themes/odometer-theme-minimal.css"
+    />
+
+    <!-- style -->
+    <style>
+      body {
+        position: relative;
+        text-align: center !important;
+      }
+
+      .odometer3 {
+        border-radius: 12px;
+        background: #121212;
+        text-align: center;
+      }
+
+      .odometer-inside .odometer-digit {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .odometer3 .odometer-digit {
+        color: #fff;
+        width: fit-content;
+        border-right: 1px solid red;
+        box-sizing: border-box;
+        font-size: 140px;
+        font-weight: 800;
+        padding: 0 20px !important;
+      }
+
+      .odometer3 .odometer-digit .odometer-digit-inner {
+        border-right: 1px solid red;
+      }
+
+      .odometer3 .odometer-digit .odometer-digit-inner:last-child {
+        border-right: 0 !important;
+      }
+
+      /* .odometer3 .odometer-digit .odometer-digit-inner:last-child {
+        border-right: none !important;
+      } */
+
+      .odometer3
+        .odometer-inside
+        .odometer-digit
+        .odometer-digit-inner:last-child,
+      .odometer3
+        .odometer-inside
+        .odometer-digit
+        .odometer-digit-inner:first-child {
+        border-left: none !important;
+      }
+
+      #congrates_gif_div {
+        display: none;
+      }
+
+      #congrates_gif_div .conflict_animation {
+        position: absolute;
+        top: 10%;
+        width: 600px;
+        height: calc(100% + 68px);
+        object-fit: cover;
+      }
+
+      #congrates_gif_div .conflict_animation.one {
+        left: 20%; /* adjust left side position */
+      }
+
+      #congrates_gif_div .conflict_animation.two {
+        left: 45%; /* adjust middle side position */
+      }
+
+      #congrates_gif_div .conflict_animation.three {
+        right: 0%;
+        object-position: right;
+      }
+
+      .odometer-theme-minimal .odometer-digit .odometer-ribbon-inner {
+        transition-duration: 1s !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="odometer3"></div>
+    <!-- images -->
+    <div id="congrates_gif_div" class="congrates_gif_div">
+      <!-- <img
+        class="conflict_animation one"
+        alt="conflict_animation"
+        src="./img/Confitti-animation-1-unscreen.gif"
+      />
+
+      <img
+        class="conflict_animation two"
+        alt="conflict_animation"
+        src="./img/Confitti-animation-1-unscreen.gif"
+      />
+
+      <img
+        class="conflict_animation three"
+        alt="conflict_animation"
+        src="./img/Confitti-animation-1-unscreen.gif"
+      /> -->
+    </div>
+
+    <!-- script -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"
+      integrity="sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      // update every second
+      var el = document.querySelector(".odometer3");
+      var v = 4605980;
+      var o = new Odometer({
+        el: el,
+        value: v,
+        theme: "minimal",
+        format: "(ddd)",
+      });
+      o.render();
+
+      // Convert the number to an array of digits
+      //   const digits = Array.from(v.toString()).map(Number);
+
+      //   digits.forEach((digit) => {
+      //     // h1 creates
+      //     const h1 = document.createElement("h1");
+      //     h1.textContent = digit;
+
+      //     el.appendChild(h1);
+      //   });
+
+      //   start in 1 seconds
+      setInterval(function () {
+        o.update(v++);
+        localStorage.setItem("counterNumberOdometer", v);
+
+        // Retrieve the current value from localStorage
+        const getCounterNumber = localStorage.getItem("counterNumberOdometer"); // x store in location storage
+
+        // animation div
+        const conflictAnimation = document.querySelector("#congrates_gif_div");
+        // next10k reached
+        const next10kReached = Math.ceil(v / 100) * 100;
+        // set localStorage of number odometer
+        localStorage.setItem("Next10kReachedShowAnimation", next10kReached);
+
+        // check next 10k reached then animation starts
+        if (next10kReached == getCounterNumber) {
+          console.log("Animation Start");
+          localStorage.setItem(
+            "matchThis11kToHideAnimation",
+            next10kReached + 50
+          );
+
+          localStorage.setItem("animationStartWith10k", true);
+        }
+
+        // get 11k number for matching with odometer
+        const get10kNumber = Number(
+          localStorage.getItem("matchThis11kToHideAnimation")
+        );
+
+        if (get10kNumber == getCounterNumber) {
+          console.log("Animation Hide");
+          localStorage.setItem("animationStartWith10k", false);
+
+          localStorage.setItem(
+            "matchThis11kToHideAnimation",
+            next10kReached + 50
+          );
+
+          // console.log("Closed animation after 11k:", next10kReached + 100);
+        }
+
+        // =======================Animation Container=========================
+        const animationPopupStart = localStorage.getItem(
+          "animationStartWith10k"
+        );
+
+        // check animationPopupStart become true
+        if (animationPopupStart === "true") {
+          // Show animations
+          conflictAnimation.style.display = "block";
+        }
+
+        // check animationPopupStart become true
+        if (animationPopupStart === "false") {
+          // hide animations
+          conflictAnimation.style.display = "none";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
